@@ -9,12 +9,13 @@ import {
 import { Button } from "../ui/button";
 
 import Autoplay from "embla-carousel-autoplay";
+import Fade from "embla-carousel-fade"
 
 function MainBanner() {
   const myStyle = [
     {
      style:{ backgroundImage:
-        "url('https://images.pexels.com/photos/242829/pexels-photo-242829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        "url('https://img.freepik.com/free-photo/style-fashion-clothes-men-s-wear-concept-isolated-view-stylish-young-bearded-male-model-with-wavy-hair-posing-wearing-trendy-plaid-shirt-looking-away-buttoning-up-cuff_343059-1871.jpg?t=st=1724159394~exp=1724162994~hmac=a3ce94a86a1974b3f0abeca5996e895becc801853e62d7bfa993ffb271f6e49f&w=1060')",
       height: "94vh",
 
       backgroundSize: "cover",
@@ -32,7 +33,7 @@ function MainBanner() {
     },
     {
      style:{ backgroundImage:
-        "url('https://images.pexels.com/photos/12255947/pexels-photo-12255947.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        "url('https://img.freepik.com/free-photo/elegant-woman-looking-watch_23-2147762392.jpg?t=st=1724159586~exp=1724163186~hmac=e3b9d7282e86113e3bfe768e8b6fdb1d57b91378da548a3c1880111138817e2d&w=1060')",
       height: "94vh",
 
       backgroundSize: "cover",
@@ -51,14 +52,14 @@ function MainBanner() {
 
     {
       style:{ backgroundImage:
-        "url('https://images.pexels.com/photos/1619697/pexels-photo-1619697.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')",
+        "url('https://img.freepik.com/free-photo/girl-posing-with-shopping-bags_23-2147825037.jpg?t=st=1724159646~exp=1724163246~hmac=8112fcc3de5300d7c06450cfcd04b76159002c2da20cea296a004b9f5f04f6df&w=1380')",
       height: "94vh",
 
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat"
       },
       info:{
-        name:"Kids' Collection",
+        name:"Kid's Collection",
         description:"Discover the latest kids' fashion trends",
         button:(
           <Button className="">
@@ -80,7 +81,16 @@ function MainBanner() {
         plugins={[
           Autoplay({
             delay: 4000,
+            disableOnInteraction: false,
+            stopOnMouseEnter:false
           }),
+          Fade({
+            crossFade: true,
+            duration:7000,
+            
+          })
+          
+
         ]}
       >
         <CarouselContent>

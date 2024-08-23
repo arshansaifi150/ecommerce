@@ -2,7 +2,9 @@ import express from 'express'
 import cors from 'cors'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
-
+import authRoutes from './src/routes/authRoutes.js'
+import productRoutes from './src/routes/productRoutes.js'
+import isAuth from './src/middleware/auth.js';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -10,6 +12,7 @@ dotenv.config();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(isAuth)
 
 const URI = process.env.MONGO_DB_URI
 if (!URI) {
@@ -31,9 +34,8 @@ mongoose
 
 
 //api routes
-app.get('/hello',(req,res)=>{
-    res.send('server')
-})
+app.use('/',authRoutes)
+app.use('/products',productRoutes)
 
 //startServer function
 function startServer(){
