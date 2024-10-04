@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 function Home() {
   
   const [products, setProducts] = useState([]);
+  
 
   const getProducts = async()=>{
     try {
@@ -22,6 +23,8 @@ function Home() {
 
   useEffect(()=>{
     getProducts();
+    
+
   },[])
 
   // const cardClick = (id)=>{

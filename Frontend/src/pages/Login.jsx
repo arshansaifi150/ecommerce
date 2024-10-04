@@ -20,8 +20,10 @@ function Login() {
             // withCredentials: true
         })
         console.log(response.data)
-        if (response.data.success) {
+        const token = !!response.data.token
+        if (token) {
             localStorage.setItem('token', response.data.token)
+            localStorage.setItem('isAdmin',response.data.isAdmin)
             navigate('/')
 
         } else {

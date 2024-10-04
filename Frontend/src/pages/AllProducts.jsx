@@ -6,6 +6,7 @@ import { Button } from "../components/ui/button";
 
 function Home() {
   const [products, setProducts] = useState([]);
+  const [isAdmin,setIsAdmin] = useState(false)
 
   const getProducts = async () => {
     try {
@@ -18,15 +19,29 @@ function Home() {
 
   useEffect(() => {
     getProducts();
+    const admin = localStorage.getItem('isAdmin')
+    // console.log(admin)
+    if(!admin){
+      
+      setIsAdmin(false)
+      console.log('hello')
+    }else{
+      setIsAdmin(true)
+      console.log('yooo')
+
+    } 
   }, []);
 
   // const cardClick = (id)=>{
   //     navigate(`/ProductDetail/${id}`)
   // }
 
-  console.log(products);
+  // console.log(products);
+  
   return (
     <>
+    {isAdmin&&(
+
     <div className="w-full text-end ">
     <Link to="/AddProduct">
         <Button className="mr-10 mt-5">
@@ -34,6 +49,7 @@ function Home() {
         </Button>
         </Link>
     </div>
+    )}
       <div className="w-full flex justify-center mt-10 mb-20">
         <div className="w-[80%] flex gap-5 justify-center flex-wrap ">
           {products?.map((product) => (
